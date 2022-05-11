@@ -18,6 +18,19 @@ The **good practises** are a set of standards which, when adhered to, can greatl
  - *Having good indentation will make it much easier for other developers
    to understand your code..*.
    
+     ```javascript
+    function anExampleFunction() {
+        let x;
+        if(true){
+            x = true;
+        }else{
+            x = false;
+        }
+        return x;
+    }
+
+    ```
+   
 **Respect of syntax conventions :**
 
 
