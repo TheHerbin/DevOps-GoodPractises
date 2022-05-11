@@ -62,20 +62,6 @@ Se limiter à maximum trois ou quatre imbrications de dossier dans un même proj
 
 Bonne pratique NodeJS 
 
-Architecture 
-
-Organisez votre projet en composants 
-
-Organisez vos composants en strates, gardez la couche web à l'intérieur de son périmètre 
-
-Externalisez les utilitaires communs en paquets NPM 
-
-Séparez Express 'app' et 'server' 
-
-Utilisez une configuration respectueuse de l'environnement, sécurisée et hiérarchique 
-
-
-
 Style de code  
 
 (https://github.com/goldbergyoni/nodebestpractices/blob/master/README.french.md#1-structure-de-projet) 
