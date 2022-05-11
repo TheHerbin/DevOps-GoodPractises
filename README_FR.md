@@ -1,12 +1,12 @@
 Bonnes pratiques ?  
 
 Les bonnes pratiques sont un ensemble de normes qui, lorsqu’elles sont respectées peuvent fortement aider le développement, la maintenance, la modification, pour l’optimisation et la compréhension du code en général. 
- 
 
- 
+
+
 Voici une liste (non exhaustive) de bonnes pratiques à respecter lors du développement d’un projet en équipe ou seul : 
 
- 
+
 
 Bonnes Pratiques Générales :  
 
@@ -42,7 +42,7 @@ Créer des classes de tests unitaires, fonctionnels, d’intégration...
 
 Utilisation d’API 
 
- 
+
 
 Bonne pratique REACT JS 
 
@@ -74,7 +74,7 @@ Séparez Express 'app' et 'server'
 
 Utilisez une configuration respectueuse de l'environnement, sécurisée et hiérarchique 
 
- 
+
 
 Style de code  
 
@@ -82,15 +82,15 @@ Style de code
 
 ESLint:  est la norme de facto pour vérifier d'éventuelles erreurs de code et pour corriger le style du code, ce n'est pas uniquement pour identifier les problèmes d'espacement mais aussi pour détecter les antipatterns préoccupants du code comme par exemple les développeurs levant des erreurs sans classification. 
 
- 
+
 
 Commencez les accolades d'un bloc de code sur la même ligne.  
 
 Le non-respect de cette bonne pratique peut conduire à des résultats inattendus.  
 
- 
 
- 
+
+
 
 Bonne pratiques REACT JS 
 
@@ -108,8 +108,4 @@ Ex : Une autre manière répandue de structurer les projets consiste à grouper 
 
 Se limiter à maximum trois ou quatre imbrications de dossier dans un même projet car il devient plus difficile d’écrire des importations relatives entre eux ou de mettre à jours ces importations lorsque les fichiers sont déplacés. 
 
- 
 
- 
-
- 
