@@ -60,23 +60,6 @@ Ex : Une autre manière répandue de structurer les projets consiste à grouper 
 
 Se limiter à maximum trois ou quatre imbrications de dossier dans un même projet car il devient plus difficile d’écrire des importations relatives entre eux ou de mettre à jours ces importations lorsque les fichiers sont déplacés. 
 
-Bonne pratique NodeJS 
-
-Style de code  
-
-(https://github.com/goldbergyoni/nodebestpractices/blob/master/README.french.md#1-structure-de-projet) 
-
-ESLint:  est la norme de facto pour vérifier d'éventuelles erreurs de code et pour corriger le style du code, ce n'est pas uniquement pour identifier les problèmes d'espacement mais aussi pour détecter les antipatterns préoccupants du code comme par exemple les développeurs levant des erreurs sans classification. 
-
-
-
-Commencez les accolades d'un bloc de code sur la même ligne.  
-
-Le non-respect de cette bonne pratique peut conduire à des résultats inattendus.  
-
-
-
-
 
 Bonne pratiques REACT JS 
 
@@ -98,6 +81,9 @@ Se limiter à maximum trois ou quatre imbrications de dossier dans un même proj
 
 # Bonne pratique Node.js
 
+(https://github.com/goldbergyoni/nodebestpractices/blob/master/README.french.md#1-structure-de-projet) 
+(https://github.com/airbnb/javascript#comments)
+
 ## Table des matières
 
 1. [Structure de projet](#1-structure-du-projet)
@@ -108,14 +94,14 @@ Se limiter à maximum trois ou quatre imbrications de dossier dans un même proj
 ## `1. Structure du projet`
 ### 1.1 Organisez votre projet en composants
 
-**TL;PL :** Le pire obstacle des énormes applications est la maintenance d'une base de code immense contenant des centaines de dépendances - un tel monolithe ralentit les développeurs tentant d'ajouter de nouvelles fonctionnalités. Pour éviter cela, répartissez votre code en composants, chacun dans son dossier avec son code dédié, et assurez vous que chaque unité soit courte et simple. Visitez le lien « Plus d'infos » plus bas pour voir des exemples de structure de projet correcte.
+Le pire obstacle des énormes applications est la maintenance d'une base de code immense contenant des centaines de dépendances - un tel monolithe ralentit les développeurs tentant d'ajouter de nouvelles fonctionnalités. Pour éviter cela, répartissez votre code en composants, chacun dans son dossier avec son code dédié, et assurez vous que chaque unité soit courte et simple. Visitez le lien « Plus d'infos » plus bas pour voir des exemples de structure de projet correcte.
 
 **Autrement :** Lorsque les développeurs qui codent de nouvelles fonctionnalités ont du mal à réaliser l'impact de leur changement et craignent de casser d'autres composants dépendants - les déploiements deviennent plus lents et plus risqués. Il est aussi considéré plus difficile d'élargir un modèle d'application quand les unités opérationnelles ne sont pas séparées.
 
 <br/><br/>
 ### 1.2 Organisez vos composants en strates, gardez la couche web à l'intérieur de son périmètre
 
-**TL;PL :** Chaque composant devrait contenir des « strates » - un objet dédié pour le web, un pour la logique et un pour le code d'accès aux données. Cela permet non seulement de séparer clairement les responsabilités mais permet aussi de simuler et de tester le système de manière plus simple. Bien qu'il s'agisse d'un modèle très courant, les développeurs d'API ont tendance à mélanger les strates en passant l'objet dédié au web (Par exemple Express req, res) à la logique opérationnelle et aux strates de données - cela rend l'application dépendante et accessible seulement par les frameworks web spécifiques.
+Chaque composant devrait contenir des « strates » - un objet dédié pour le web, un pour la logique et un pour le code d'accès aux données. Cela permet non seulement de séparer clairement les responsabilités mais permet aussi de simuler et de tester le système de manière plus simple. Bien qu'il s'agisse d'un modèle très courant, les développeurs d'API ont tendance à mélanger les strates en passant l'objet dédié au web (Par exemple Express req, res) à la logique opérationnelle et aux strates de données - cela rend l'application dépendante et accessible seulement par les frameworks web spécifiques.
 
 **Autrement :** Les tests, les jobs CRON, les déclencheurs des files d'attente de messages et etc ne peuvent pas accéder à une application qui mélange les objets web avec les autres strates.
 
@@ -123,7 +109,7 @@ Se limiter à maximum trois ou quatre imbrications de dossier dans un même proj
 
 ### 1.3 Séparez Express 'app' et 'server'
 
-**TL;PL :** Evitez la sale habitude de définir l'appli [Express](https://expressjs.com/) toute entière dans un seul fichier immense - séparez la définition de votre 'Express' en au moins deux fichiers : la déclaration de l'API (app.js) et les responsabilités de gestion de réseau (WWW). Pour une structure encore plus poussée, localisez la déclaration de l'API dans les composants.
+Evitez la sale habitude de définir l'appli [Express](https://expressjs.com/) toute entière dans un seul fichier immense - séparez la définition de votre 'Express' en au moins deux fichiers : la déclaration de l'API (app.js) et les responsabilités de gestion de réseau (WWW). Pour une structure encore plus poussée, localisez la déclaration de l'API dans les composants.
 
 **Autrement :** Votre API sera seulement accessible aux tests par le biais d'appels HTTP (plus lent et plus difficile de générer des rapports de couverture). Cela ne sera pas un réel plaisir de maintenir des centaines de lignes de code dans un fichier unique.
 
@@ -132,7 +118,7 @@ Se limiter à maximum trois ou quatre imbrications de dossier dans un même proj
 
 ### 1.4 Utilisez une configuration respectueuse de l'environnement, sécurisée et hiérarchique
 
-**TL;PL :** La mise en place d'une configuration parfaite et sans faille doit garantir que (a) les clés peuvent être lues depuis un fichier ET à partir de la variable d'environnement (b) les secrets sont conservés hors du code source (c) la configuration est hiérarchique pour une recherche plus simple. Certains paquets peuvent gérer la plupart de ces points comme [rc](https://www.npmjs.com/package/rc), [nconf](https://www.npmjs.com/package/nconf), [config](https://www.npmjs.com/package/config) et [convict](https://www.npmjs.com/package/convict).
+La mise en place d'une configuration parfaite et sans faille doit garantir que (a) les clés peuvent être lues depuis un fichier ET à partir de la variable d'environnement (b) les secrets sont conservés hors du code source (c) la configuration est hiérarchique pour une recherche plus simple. Certains paquets peuvent gérer la plupart de ces points comme [rc](https://www.npmjs.com/package/rc), [nconf](https://www.npmjs.com/package/nconf), [config](https://www.npmjs.com/package/config) et [convict](https://www.npmjs.com/package/convict).
 
 **Autrement :** Ne pas se soucier de ces exigences de configuration ne fera que ralentir l'équipe de développement ou l'équipe de DevOps. Probablement les deux.
 
@@ -513,5 +499,32 @@ Se limiter à maximum trois ou quatre imbrications de dossier dans un même proj
     const firstNames = new WeakMap();
     firstNames.set(this, 'Panda');
     ```
+    <br/>
+ ### 2.5 Utilisez ESLint
 
+[ESLint](https://eslint.org) est la norme de facto pour vérifier d'éventuelles erreurs de code et pour corriger le style du code, ce n'est pas uniquement pour identifier les problèmes d'espacement mais aussi pour détecter les antipatterns préoccupants du code comme par exemple les développeurs levant des erreurs sans classification. Bien qu'ESLint puisse corriger automatiquement les styles du code, d'autres outils comme [prettier](https://www.npmjs.com/package/prettier) et [beautify](https://www.npmjs.com/package/js-beautify) sont plus puissants dans le formatage de la correction et fonctionnent en collaboration avec ESLint.
 
+**Autrement :** Les développeurs se concentreront sur les problèmes fastidieux d'espacement et de largeur de ligne, ce qui pourrait faire perdre du temps à trop réfléchir sur le style de code du projet.
+
+<br/>
+
+### 2.6 Commencez les accolades d'un bloc de code sur la même ligne
+
+Les accolades ouvrantes d'un bloc de code doivent être sur la même ligne que l'instruction d'ouverture.
+
+```javascript
+// bad
+function someFunction
+{
+  // bloc de code
+}
+
+// good
+function someFunction() {
+  // bloc de code
+}
+```
+
+**Autrement :** Le non-respect de cette bonne pratique peut conduire à des résultats inattendus.
+
+<br/><br/>
