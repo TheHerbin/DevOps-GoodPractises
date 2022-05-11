@@ -110,12 +110,56 @@ Se limiter à maximum trois ou quatre imbrications de dossier dans un même proj
 
 
 
-Bonne pratique NodeJS
+# Bonne pratique Node.js
 
-## 1. Commentaire
+## Table des matières
 
-  <a name="comments--multiline"></a><a name="1.1"></a>
-  - [1.1](#comments--multiline) Utiliser `/** ... */` pour les commentaires mutilignes.
+1. [Structure de projet](#1-structure-du-projet)
+2. [Style du code](#2-style-du-code)
+
+
+<br/><br/>
+## `1. Structure du projet`
+### 1.1 Organisez votre projet en composants
+
+**TL;PL :** Le pire obstacle des énormes applications est la maintenance d'une base de code immense contenant des centaines de dépendances - un tel monolithe ralentit les développeurs tentant d'ajouter de nouvelles fonctionnalités. Pour éviter cela, répartissez votre code en composants, chacun dans son dossier avec son code dédié, et assurez vous que chaque unité soit courte et simple. Visitez le lien « Plus d'infos » plus bas pour voir des exemples de structure de projet correcte.
+
+**Autrement :** Lorsque les développeurs qui codent de nouvelles fonctionnalités ont du mal à réaliser l'impact de leur changement et craignent de casser d'autres composants dépendants - les déploiements deviennent plus lents et plus risqués. Il est aussi considéré plus difficile d'élargir un modèle d'application quand les unités opérationnelles ne sont pas séparées.
+
+<br/><br/>
+### 1.2 Organisez vos composants en strates, gardez la couche web à l'intérieur de son périmètre
+
+**TL;PL :** Chaque composant devrait contenir des « strates » - un objet dédié pour le web, un pour la logique et un pour le code d'accès aux données. Cela permet non seulement de séparer clairement les responsabilités mais permet aussi de simuler et de tester le système de manière plus simple. Bien qu'il s'agisse d'un modèle très courant, les développeurs d'API ont tendance à mélanger les strates en passant l'objet dédié au web (Par exemple Express req, res) à la logique opérationnelle et aux strates de données - cela rend l'application dépendante et accessible seulement par les frameworks web spécifiques.
+
+**Autrement :** Les tests, les jobs CRON, les déclencheurs des files d'attente de messages et etc ne peuvent pas accéder à une application qui mélange les objets web avec les autres strates.
+
+<br/><br/>
+
+### 1.3 Séparez Express 'app' et 'server'
+
+**TL;PL :** Evitez la sale habitude de définir l'appli [Express](https://expressjs.com/) toute entière dans un seul fichier immense - séparez la définition de votre 'Express' en au moins deux fichiers : la déclaration de l'API (app.js) et les responsabilités de gestion de réseau (WWW). Pour une structure encore plus poussée, localisez la déclaration de l'API dans les composants.
+
+**Autrement :** Votre API sera seulement accessible aux tests par le biais d'appels HTTP (plus lent et plus difficile de générer des rapports de couverture). Cela ne sera pas un réel plaisir de maintenir des centaines de lignes de code dans un fichier unique.
+
+
+<br/><br/>
+
+### 1.4 Utilisez une configuration respectueuse de l'environnement, sécurisée et hiérarchique
+
+**TL;PL :** La mise en place d'une configuration parfaite et sans faille doit garantir que (a) les clés peuvent être lues depuis un fichier ET à partir de la variable d'environnement (b) les secrets sont conservés hors du code source (c) la configuration est hiérarchique pour une recherche plus simple. Certains paquets peuvent gérer la plupart de ces points comme [rc](https://www.npmjs.com/package/rc), [nconf](https://www.npmjs.com/package/nconf), [config](https://www.npmjs.com/package/config) et [convict](https://www.npmjs.com/package/convict).
+
+**Autrement :** Ne pas se soucier de ces exigences de configuration ne fera que ralentir l'équipe de développement ou l'équipe de DevOps. Probablement les deux.
+
+
+<br/><br/><br/>
+
+
+
+## `2. Style du code` 
+### 2.1. Commentaire
+
+  <a name="comments--multiline"></a><a name="2.1.1"></a>
+  - [2.1.1](#comments--multiline) Utiliser `/** ... */` pour les commentaires mutilignes.
 
     ```javascript
     // bad
@@ -144,7 +188,7 @@ Bonne pratique NodeJS
     }
     ```
      <a name="comments--singleline"></a><a name="1.2"></a>
-  - [1.2](#comments--singleline) Utiliser `//` pour les commentaires sur une ligne.
+  - [2.1.2](#comments--singleline) Utiliser `//` pour les commentaires sur une ligne.
 
     ```javascript
     // bad
@@ -183,7 +227,7 @@ Bonne pratique NodeJS
     ```
     
     <a name="comments--spaces"></a>
-  - [1.3](#comments--spaces) Commencez tous les commentaires par un espace pour faciliter la lecture. 
+  - [2.1.3](#comments--spaces) Commencez tous les commentaires par un espace pour faciliter la lecture. 
 
     ```javascript
     // bad
@@ -219,10 +263,10 @@ Bonne pratique NodeJS
     }
     ```
 <a name="comments--actionitems"></a><a name="1.4"></a>
-  - [1.4](#comments--actionitems) Préfixer vos commentaires avec FIXMEou TODO aide les autres développeurs à comprendre rapidement si vous signalez un problème qui doit être réexaminé, ou si vous suggérez une solution au problème qui doit être implémentée. Ceux-ci sont différents des commentaires réguliers car ils sont exploitables..
+  - [2.1.4](#comments--actionitems) Préfixer vos commentaires avec FIXMEou TODO aide les autres développeurs à comprendre rapidement si vous signalez un problème qui doit être réexaminé, ou si vous suggérez une solution au problème qui doit être implémentée. Ceux-ci sont différents des commentaires réguliers car ils sont exploitables..
 
   <a name="comments--fixme"></a><a name="1.5"></a>
-  - [1.5](#comments--fixme) Utiliser `// FIXME:` pour annoter les problèmes.
+  - [2.1.5](#comments--fixme) Utiliser `// FIXME:` pour annoter les problèmes.
 
     ```javascript
     class Calculator extends Abacus {
@@ -236,7 +280,7 @@ Bonne pratique NodeJS
     ```
 
   <a name="comments--todo"></a><a name="1.6"></a>
-  - [1.6](#comments--todo) Utiliser `// TODO:` pour annoter les solutions au problèmes.
+  - [2.1.6](#comments--todo) Utiliser `// TODO:` pour annoter les solutions au problèmes.
 
     ```javascript
     class Calculator extends Abacus {
@@ -249,10 +293,10 @@ Bonne pratique NodeJS
     }
     ```
     
-## 2. Espace Blanc
+### 2.2 Espace Blanc
 
 <a name="whitespace--spaces"></a><a name="2.1"></a>
-  - [2.1](#whitespace--spaces) Utilisez des tabulations logicielles (caractère d'espacement) définies sur 2 espaces.
+  - [2.2.1](#whitespace--spaces) Utilisez des tabulations logicielles (caractère d'espacement) définies sur 2 espaces.
 
     ```javascript
     // bad
@@ -272,7 +316,7 @@ Bonne pratique NodeJS
     ```
 
 <a name="whitespace--before-blocks"></a><a name="2.2"></a>
-  - [2.2](#whitespace--before-blocks) Placez 1 espace avant l'accolade principale.
+  - [2.2.2](#whitespace--before-blocks) Placez 1 espace avant l'accolade principale.
 
     ```javascript
     // bad
@@ -286,7 +330,7 @@ Bonne pratique NodeJS
     }
     ```
 <a name="whitespace--infix-ops"></a><a name="2.3"></a>
-  - [2.3](#whitespace--infix-ops) Démarrez les opérateurs avec des espaces.
+  - [2.2.3](#whitespace--infix-ops) Démarrez les opérateurs avec des espaces.
 
     ```javascript
     // bad
@@ -297,7 +341,7 @@ Bonne pratique NodeJS
     ```
     
 <a name="whitespace--after-blocks"></a><a name="2.4"></a>
-  - [2.4](#whitespace--after-blocks) Laissez une ligne vide après les blocs et avant l'instruction suivante..
+  - [2.2.4](#whitespace--after-blocks) Laissez une ligne vide après les blocs et avant l'instruction suivante..
 
     ```javascript
     // bad
@@ -313,8 +357,8 @@ Bonne pratique NodeJS
 
     return baz;
     ```
-  <a name="whitespace--in-parens"></a><a name="2.6"></a>
-  - [2.6](#whitespace--in-parens) N'ajoutez pas d'espaces entre parenthèses. 
+  <a name="whitespace--in-parens"></a><a name="2.5"></a>
+  - [2.2.5](#whitespace--in-parens) N'ajoutez pas d'espaces entre parenthèses. 
 
     ```javascript
     // bad
@@ -327,8 +371,8 @@ Bonne pratique NodeJS
       return foo;
     }
     ```
- <a name="whitespace--in-braces"></a><a name="2.7"></a>
-  - [2.7](#whitespace--in-braces) Ajoutez des espaces à l'intérieur des accolades.
+ <a name="whitespace--in-braces"></a><a name="2.6"></a>
+  - [2.2.6](#whitespace--in-braces) Ajoutez des espaces à l'intérieur des accolades.
 
     ```javascript
     // bad
@@ -338,7 +382,7 @@ Bonne pratique NodeJS
     const foo = { clark: 'kent' };
     ```
 <a name="whitespace--comma-spacing"></a>
-  - [2.8](#whitespace--comma-spacing) Évitez les espaces avant les virgules et exigez un espace après les virgules.
+  - [2.2.7](#whitespace--comma-spacing) Évitez les espaces avant les virgules et exigez un espace après les virgules.
 
     ```javascript
     // bad
@@ -350,7 +394,7 @@ Bonne pratique NodeJS
     var arr = [1, 2];
     ```
   <a name="whitespace--func-call-spacing"></a>
-  - [2.9](#whitespace--func-call-spacing) Évitez les espaces entre les fonctions et leurs invocations.
+  - [2.2.8](#whitespace--func-call-spacing) Évitez les espaces entre les fonctions et leurs invocations.
 
     ```javascript
     // bad
@@ -362,10 +406,10 @@ Bonne pratique NodeJS
     // good
     func();
     ```
-## Points-virgules
+### 2.3 Points-virgules
 
  <a name="semicolons--required"></a><a name="3.1"></a>
-  - [3.1](#semicolons--required) Sensible
+  - [2.3.1](#semicolons--required) Sensible
 
     > Lorsque JavaScript rencontre un saut de ligne sans point-virgule, il utilise un ensemble de règles appelé Insertion automatique de point-virgule (https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion) pour déterminer s'il doit considérer ce saut de ligne comme la fin d'une instruction et (comme son nom l'indique) placer un point-virgule dans votre code avant le saut de ligne. ASI contient cependant quelques comportements excentriques et votre code se cassera si JavaScript interprète mal votre saut de ligne.
 
@@ -408,10 +452,10 @@ Bonne pratique NodeJS
     }
     ```
 
- ## 4. Conventions de nommage
+ ### 2.4. Conventions de nommage
 
   <a name="naming--descriptive"></a><a name="4.1"></a>
-  - [4.1](#naming--descriptive) Évitez les noms à une seule lettre. Soyez descriptif avec votre nom.
+  - [2.4.1](#naming--descriptive) Évitez les noms à une seule lettre. Soyez descriptif avec votre nom.
 
     ```javascript
     // bad
@@ -426,7 +470,7 @@ Bonne pratique NodeJS
     ```
 
   <a name="naming--camelCase"></a><a name="4.2"></a>
-  - [4.2](#naming--camelCase) Utilisez camelCase pour nommer des objets, des fonctions et des instances.
+  - [2.4.2](#naming--camelCase) Utilisez camelCase pour nommer des objets, des fonctions et des instances.
 
     ```javascript
     // bad
@@ -440,7 +484,7 @@ Bonne pratique NodeJS
     ```
 
   <a name="naming--PascalCase"></a><a name="4.3"></a>
-  - [4.3](#naming--PascalCase) Utilisez PascalCase uniquement lorsque vous nommez des constructeurs ou des classes.
+  - [2.4.3](#naming--PascalCase) Utilisez PascalCase uniquement lorsque vous nommez des constructeurs ou des classes.
 
     ```javascript
     // bad
@@ -465,7 +509,7 @@ Bonne pratique NodeJS
     ```
 
   <a name="naming--leading-underscore"></a><a name="4.4"></a>
-  - [4.4](#naming--leading-underscore) N'utilisez pas de traits de soulignement à la fin ou au début.
+  - [2.4.4](#naming--leading-underscore) N'utilisez pas de traits de soulignement à la fin ou au début.
 
     > Pourquoi? JavaScript n'a pas le concept de confidentialité en termes de propriétés ou de méthodes. Bien qu'un trait de soulignement en tête soit une convention courante pour signifier "privé", en fait, ces propriétés sont entièrement publiques et, en tant que telles, font partie de votre contrat d'API publique. Cette convention peut amener les développeurs à penser à tort qu'un changement ne sera pas considéré comme une rupture ou que les tests ne sont pas nécessaires.
 
