@@ -109,3 +109,379 @@ Ex : Une autre manière répandue de structurer les projets consiste à grouper 
 Se limiter à maximum trois ou quatre imbrications de dossier dans un même projet car il devient plus difficile d’écrire des importations relatives entre eux ou de mettre à jours ces importations lorsque les fichiers sont déplacés. 
 
 
+
+Bonne pratique NodeJS
+
+## 1. Commentaire
+
+  <a name="comments--multiline"></a><a name="1.1"></a>
+  - [1.1](#comments--multiline) Utiliser `/** ... */` pour les commentaires mutilignes.
+
+    ```javascript
+    // bad
+    // make() returns a new element
+    // based on the passed in tag name
+    //
+    // @param {String} tag
+    // @return {Element} element
+    function make(tag) {
+
+      // ...
+
+      return element;
+    }
+
+    // good
+    /**
+     * make() returns a new element
+     * based on the passed-in tag name
+     */
+    function make(tag) {
+
+      // ...
+
+      return element;
+    }
+    ```
+     <a name="comments--singleline"></a><a name="1.2"></a>
+  - [1.2](#comments--singleline) Utiliser `//` pour les commentaires sur une ligne.
+
+    ```javascript
+    // bad
+    const active = true;  // is current tab
+
+    // good
+    // is current tab
+    const active = true;
+
+    // bad
+    function getType() {
+      console.log('fetching type...');
+      // set the default type to 'no type'
+      const type = this.type || 'no type';
+
+      return type;
+    }
+
+    // good
+    function getType() {
+      console.log('fetching type...');
+
+      // set the default type to 'no type'
+      const type = this.type || 'no type';
+
+      return type;
+    }
+
+    // also good
+    function getType() {
+      // set the default type to 'no type'
+      const type = this.type || 'no type';
+
+      return type;
+    }
+    ```
+    
+    <a name="comments--spaces"></a>
+  - [1.3](#comments--spaces) Commencez tous les commentaires par un espace pour faciliter la lecture. 
+
+    ```javascript
+    // bad
+    //is current tab
+    const active = true;
+
+    // good
+    // is current tab
+    const active = true;
+
+    // bad
+    /**
+     *make() returns a new element
+     *based on the passed-in tag name
+     */
+    function make(tag) {
+
+      // ...
+
+      return element;
+    }
+
+    // good
+    /**
+     * make() returns a new element
+     * based on the passed-in tag name
+     */
+    function make(tag) {
+
+      // ...
+
+      return element;
+    }
+    ```
+<a name="comments--actionitems"></a><a name="1.4"></a>
+  - [1.4](#comments--actionitems) Préfixer vos commentaires avec FIXMEou TODO aide les autres développeurs à comprendre rapidement si vous signalez un problème qui doit être réexaminé, ou si vous suggérez une solution au problème qui doit être implémentée. Ceux-ci sont différents des commentaires réguliers car ils sont exploitables..
+
+  <a name="comments--fixme"></a><a name="1.5"></a>
+  - [1.5](#comments--fixme) Utiliser `// FIXME:` pour annoter les problèmes.
+
+    ```javascript
+    class Calculator extends Abacus {
+      constructor() {
+        super();
+
+        // FIXME: shouldn’t use a global here
+        total = 0;
+      }
+    }
+    ```
+
+  <a name="comments--todo"></a><a name="1.6"></a>
+  - [1.6](#comments--todo) Utiliser `// TODO:` pour annoter les solutions au problèmes.
+
+    ```javascript
+    class Calculator extends Abacus {
+      constructor() {
+        super();
+
+        // TODO: total should be configurable by an options param
+        this.total = 0;
+      }
+    }
+    ```
+    
+## 2. Espace Blanc
+
+<a name="whitespace--spaces"></a><a name="2.1"></a>
+  - [2.1](#whitespace--spaces) Utilisez des tabulations logicielles (caractère d'espacement) définies sur 2 espaces.
+
+    ```javascript
+    // bad
+    function foo() {
+    ∙∙∙∙let name;
+    }
+
+    // bad
+    function bar() {
+    ∙let name;
+    }
+
+    // good
+    function baz() {
+    ∙∙let name;
+    }
+    ```
+
+<a name="whitespace--before-blocks"></a><a name="2.2"></a>
+  - [2.2](#whitespace--before-blocks) Placez 1 espace avant l'accolade principale.
+
+    ```javascript
+    // bad
+    function test(){
+      console.log('test');
+    }
+
+    // good
+    function test() {
+      console.log('test');
+    }
+    ```
+<a name="whitespace--infix-ops"></a><a name="2.3"></a>
+  - [2.3](#whitespace--infix-ops) Démarrez les opérateurs avec des espaces.
+
+    ```javascript
+    // bad
+    const x=y+5;
+
+    // good
+    const x = y + 5;
+    ```
+    
+<a name="whitespace--after-blocks"></a><a name="2.4"></a>
+  - [2.4](#whitespace--after-blocks) Laissez une ligne vide après les blocs et avant l'instruction suivante..
+
+    ```javascript
+    // bad
+    if (foo) {
+      return bar;
+    }
+    return baz;
+
+    // good
+    if (foo) {
+      return bar;
+    }
+
+    return baz;
+    ```
+  <a name="whitespace--in-parens"></a><a name="2.6"></a>
+  - [2.6](#whitespace--in-parens) N'ajoutez pas d'espaces entre parenthèses. 
+
+    ```javascript
+    // bad
+    function bar( foo ) {
+      return foo;
+    }
+
+    // good
+    function bar(foo) {
+      return foo;
+    }
+    ```
+ <a name="whitespace--in-braces"></a><a name="2.7"></a>
+  - [2.7](#whitespace--in-braces) Ajoutez des espaces à l'intérieur des accolades.
+
+    ```javascript
+    // bad
+    const foo = {clark: 'kent'};
+
+    // good
+    const foo = { clark: 'kent' };
+    ```
+<a name="whitespace--comma-spacing"></a>
+  - [2.8](#whitespace--comma-spacing) Évitez les espaces avant les virgules et exigez un espace après les virgules.
+
+    ```javascript
+    // bad
+    var foo = 1,bar = 2;
+    var arr = [1 , 2];
+
+    // good
+    var foo = 1, bar = 2;
+    var arr = [1, 2];
+    ```
+  <a name="whitespace--func-call-spacing"></a>
+  - [2.9](#whitespace--func-call-spacing) Évitez les espaces entre les fonctions et leurs invocations.
+
+    ```javascript
+    // bad
+    func ();
+
+    func
+    ();
+
+    // good
+    func();
+    ```
+## Points-virgules
+
+ <a name="semicolons--required"></a><a name="3.1"></a>
+  - [3.1](#semicolons--required) Sensible
+
+    > Lorsque JavaScript rencontre un saut de ligne sans point-virgule, il utilise un ensemble de règles appelé Insertion automatique de point-virgule (https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion) pour déterminer s'il doit considérer ce saut de ligne comme la fin d'une instruction et (comme son nom l'indique) placer un point-virgule dans votre code avant le saut de ligne. ASI contient cependant quelques comportements excentriques et votre code se cassera si JavaScript interprète mal votre saut de ligne.
+
+    ```javascript
+    // bad - raises exception
+    const luke = {}
+    const leia = {}
+    [luke, leia].forEach((jedi) => jedi.father = 'vader')
+
+    // bad - raises exception
+    const reaction = "No! That’s impossible!"
+    (async function meanwhileOnTheFalcon() {
+      // handle `leia`, `lando`, `chewie`, `r2`, `c3p0`
+      // ...
+    }())
+
+    // bad - returns `undefined` instead of the value on the next line - always happens when `return` is on a line by itself because of ASI!
+    function foo() {
+      return
+        'search your feelings, you know it to be foo'
+    }
+
+    // good
+    const luke = {};
+    const leia = {};
+    [luke, leia].forEach((jedi) => {
+      jedi.father = 'vader';
+    });
+
+    // good
+    const reaction = "No! That’s impossible!";
+    (async function meanwhileOnTheFalcon() {
+      // handle `leia`, `lando`, `chewie`, `r2`, `c3p0`
+      // ...
+    }());
+
+    // good
+    function foo() {
+      return 'search your feelings, you know it to be foo';
+    }
+    ```
+
+ ## 4. Conventions de nommage
+
+  <a name="naming--descriptive"></a><a name="4.1"></a>
+  - [4.1](#naming--descriptive) Évitez les noms à une seule lettre. Soyez descriptif avec votre nom.
+
+    ```javascript
+    // bad
+    function q() {
+      // ...
+    }
+
+    // good
+    function query() {
+      // ...
+    }
+    ```
+
+  <a name="naming--camelCase"></a><a name="4.2"></a>
+  - [4.2](#naming--camelCase) Utilisez camelCase pour nommer des objets, des fonctions et des instances.
+
+    ```javascript
+    // bad
+    const OBJEcttsssss = {};
+    const this_is_my_object = {};
+    function c() {}
+
+    // good
+    const thisIsMyObject = {};
+    function thisIsMyFunction() {}
+    ```
+
+  <a name="naming--PascalCase"></a><a name="4.3"></a>
+  - [4.3](#naming--PascalCase) Utilisez PascalCase uniquement lorsque vous nommez des constructeurs ou des classes.
+
+    ```javascript
+    // bad
+    function user(options) {
+      this.name = options.name;
+    }
+
+    const bad = new user({
+      name: 'nope',
+    });
+
+    // good
+    class User {
+      constructor(options) {
+        this.name = options.name;
+      }
+    }
+
+    const good = new User({
+      name: 'yup',
+    });
+    ```
+
+  <a name="naming--leading-underscore"></a><a name="4.4"></a>
+  - [4.4](#naming--leading-underscore) N'utilisez pas de traits de soulignement à la fin ou au début.
+
+    > Pourquoi? JavaScript n'a pas le concept de confidentialité en termes de propriétés ou de méthodes. Bien qu'un trait de soulignement en tête soit une convention courante pour signifier "privé", en fait, ces propriétés sont entièrement publiques et, en tant que telles, font partie de votre contrat d'API publique. Cette convention peut amener les développeurs à penser à tort qu'un changement ne sera pas considéré comme une rupture ou que les tests ne sont pas nécessaires.
+
+    ```javascript
+    // bad
+    this.__firstName__ = 'Panda';
+    this.firstName_ = 'Panda';
+    this._firstName = 'Panda';
+
+    // good
+    this.firstName = 'Panda';
+
+    // good, in environments where WeakMaps are available
+    // see https://kangax.github.io/compat-table/es6/#test-WeakMap
+    const firstNames = new WeakMap();
+    firstNames.set(this, 'Panda');
+    ```
+
+
