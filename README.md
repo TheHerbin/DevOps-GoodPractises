@@ -79,5 +79,18 @@ The **good practises** are a set of standards which, when adhered to, can greatl
    gain some time and prevent you from creating bugs and other troubles
    at the end.*
    
+   # indicateurs de suivi de la mise en place du DevOps
+La complexité de la méthode correspond plus ou moins au nombre **d'essais nécessaires** pour couvrir **tous les cas.** Plus la méthode est complexe, plus elle est difficile à maintenir et à tester.
+```mermaid
+pie  title Complexité et cohérence
+
+"N"  : 386
+```
+La couverture de test est le **pourcentage de lignes de code du projet qui ont été appelées** pendant la phase de test. Attention : ce n'est pas parce qu'une ligne est appelée qu'elle est testé.
+```mermaid
+pie  title Tests unitaires et couverture
+
+"Couverture de test"  : 386
+   
 
 
