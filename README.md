@@ -7,7 +7,7 @@ The **good practises** are a set of standards which, when adhered to, can greatl
 
 ## Summary : 
 
- - [General Good Practices](https://github.com/TheHerbin/DevOps-GoodPractises/edit/main/README.md#general-good-practices)
+ - [General Good Practices](https://github.com/TheHerbin/DevOps-GoodPractises#general-good-practices)
  - Node JS
  - React JS
 
