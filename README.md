@@ -5,6 +5,12 @@ The **good practises** are a set of standards which, when adhered to, can greatl
  
 *Here is a list of good practices that you can follow when developing a project in a team or alone:*
 
+## Summary : 
+
+ - [General Good Practices](https://github.com/TheHerbin/DevOps-GoodPractises/edit/main/README.md#general-good-practices)
+ - Node JS
+ - React JS
+
 ## General Good Practices:
 
 **Indent:**
