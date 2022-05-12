@@ -43,42 +43,6 @@ Créer des classes de tests unitaires, fonctionnels, d’intégration...
 Utilisation d’API 
 
 
-
-Bonne pratique REACT JS 
-
-Architecture 
-
-Afin de comprendre le déroulement du projet et à ajouter d’autres fonctionnalités à l’application, il est conseillé par REACT JS (https://fr.reactjs.org/docs/faq-structure.html) 
-
-Groupé des dossiers par fonctionnalité ou par route 
-
-Ex : placer le CSS, le JS et les tests ensemble dans des dossiers groupés par fonctionnalité ou par route. 
-
-Groupé par type de fichier 
-
-Ex : Une autre manière répandue de structurer les projets consiste à grouper les fichiers similaires ensemble 
-
-Se limiter à maximum trois ou quatre imbrications de dossier dans un même projet car il devient plus difficile d’écrire des importations relatives entre eux ou de mettre à jours ces importations lorsque les fichiers sont déplacés. 
-
-
-Bonne pratiques REACT JS 
-
-Architecture 
-
-Afin de comprendre le déroulement du projet et à ajouter d’autres fonctionnalités à l’application, il est conseillé par REACT JS (https://fr.reactjs.org/docs/faq-structure.html) 
-
-Groupé des dossiers par fonctionnalité ou par route 
-
-Ex : placer le CSS, le JS et les tests ensemble dans des dossiers groupés par fonctionnalité ou par route. 
-
-Groupé par type de fichier 
-
-Ex : Une autre manière répandue de structurer les projets consiste à grouper les fichiers similaires ensemble 
-
-Se limiter à maximum trois ou quatre imbrications de dossier dans un même projet car il devient plus difficile d’écrire des importations relatives entre eux ou de mettre à jours ces importations lorsque les fichiers sont déplacés. 
-
-
-
 # Bonne pratique Node.js
 
 (https://github.com/goldbergyoni/nodebestpractices/blob/master/README.french.md#1-structure-de-projet) 
@@ -528,3 +492,63 @@ function someFunction() {
 **Autrement :** Le non-respect de cette bonne pratique peut conduire à des résultats inattendus.
 
 <br/><br/>
+
+
+# Bonne pratique React.js
+
+(https://www.codeinwp.com/blog/react-best-practices/)
+
+Pour assurer la maintenabilité, la fiabilité et l'evolution du code voici 10 conseils des meilleurs pratiques de codage React.
+
+<br/>
+
+### `🐛 Conseil n°1 : Gardez les composant petits et spécifiques à la fonction`
+Avec React, il est possible d'avoir d'énormes composants qui exécutent un certain nombre de tâches. Mais une meilleure façon de concevoir des composants est de les garder petits, de sorte qu'un composant corresponde à une fonction. Idéalement, un seul composant devrait rendre une partie spécifique de votre page ou modifier un comportement particulier. 
+
+### `♻️ Conseil n°2 : La réutilisabilité des composants est importante`
+En respectant la règle une fonction = un composant, vous pouvez améliorer la réutilisabilité des composants. Cela signifie que vous devez éviter d'essayer de créer un nouveau composant pour une fonction s'il existe déjà un composant pour cette fonction.
+En réutilisant des composants dans votre projet ou dans n'importe quel nombre de projets, non seulement vous atteindrez la cohérence, mais vous contribuerez également à la communauté.
+
+### ` 🤝 Conseil n°3 : Consolidez le code en double`
+Une règle commune à tout code est de le garder aussi bref et concis que possible.
+
+Ce n'est pas différent ici aussi, puisque les meilleures pratiques de React vous demandent également de garder un code bref et précis. Une façon d'y parvenir est d'éviter les doubles emplois – Ne vous répétez pas (DRY).
+
+Vous pouvez y parvenir en examinant le code à la recherche de modèles et de similitudes. Si vous en trouvez, il est possible que vous répétiez du code et qu'il soit possible d'éliminer les doublons. Très probablement, un peu de réécriture peut le rendre plus concis.
+
+
+### `🎨 Conseil n°4 : Mettez CSS dans JavaScript`
+Lorsque vous commencez à travailler sur un projet, il est courant de conserver tous les styles CSS dans un seul fichier SCSS. L'utilisation d'un préfixe global empêche toute collision potentielle de noms. Cependant, lorsque votre projet évolue, cette solution peut ne pas être réalisable.
+
+Il existe de nombreuses bibliothèques qui vous permettent d'écrire du CSS en JS. EmotionJS et Glamorous sont les deux CSS les plus populaires dans les bibliothèques JS.
+
+### `📝 Conseil n°5 : Ne commentez que si nécessaire`
+Joignez des commentaires au code uniquement lorsque cela est nécessaire. Ce n'est pas seulement conforme aux meilleures pratiques de React, cela sert également deux objectifs en même temps :
+
+1. Cela gardera le code visuellement sans encombrement.
+2. Vous éviterez un conflit potentiel entre le commentaire et le code, s'il vous arrive de modifier le code ultérieurement.
+
+### `🦒 Conseil n°6 : Utilisez des majuscules pour les noms de composants`
+Si,vous utilisez JSX (une extension JavaScript), les noms des composants que vous créez doivent commencer par des lettres majuscules. Par exemple, vous nommerez les composants au SelectButtonlieu de selectbutton, ou Menuau lieu de menu. Nous faisons cela pour que JSX puisse les identifier différemment des balises HTML par défaut.
+
+Les versions antérieures de React maintenaient une liste de tous les noms intégrés pour les différencier des noms personnalisés. Mais comme la liste nécessitait une mise à jour constante, elle a été supprimée et les majuscules sont devenues la norme.
+
+Si JSX n'est pas la langue de votre choix, vous pouvez utiliser des lettres minuscules. Cependant, cela peut réduire la réutilisation des composants au-delà de votre projet.
+
+### `🚀 Conseil n°7 : Le code doit s'exécuter comme prévu et être testable`
+Le code que vous écrivez doit se comporter comme prévu et pouvoir être testé facilement et rapidement. C'est une bonne pratique de nommer vos fichiers de test identiques aux fichiers source avec un .testsuffixe. Il sera alors facile de trouver les fichiers de test.
+
+Vous pouvez utiliser JEST pour tester votre code React.
+
+### `📁 Conseil n°8 : Tous les fichiers liés à un composant doivent être dans un seul dossier`
+Conservez tous les fichiers relatifs à un composant dans un seul dossier, y compris les fichiers de style.
+
+S'il existe un petit composant utilisé uniquement par un composant particulier, il est logique de conserver ces petits composants tous ensemble dans ce dossier de composants. La hiérarchie sera alors facile à comprendre - les gros composants ont leur propre dossier et toutes leurs petites parties sont divisées en sous-dossiers. De cette façon, vous pouvez facilement extraire du code vers n'importe quel autre projet ou même modifier le code quand vous le souhaitez.
+
+### `🧰 Conseil n°9 : Utilisez des outils comme Bit`
+L'une des meilleures pratiques React qui aide à organiser tous vos composants React est l'utilisation d'outils comme [Bit](https://bit.dev/).
+
+Ces outils aident à maintenir et à réutiliser le code. Au-delà de cela, cela aide le code à devenir détectable et favorise la collaboration d'équipe dans la construction de composants. De plus, le code peut être synchronisé entre les projets.
+
+### `✍️ Conseil n°10 : Ecrire des tests pour tout le code`
+Dans n'importe quel langage de programmation, des tests adéquats garantissent que tout nouveau code ajouté à votre projet s'intègre bien au code existant et ne perturbe pas les fonctionnalités existantes. C'est une bonne idée d'écrire des tests pour tout nouveau composant que vous créez. En tant que bonne pratique, vous devez créer un __Test__répertoire dans le répertoire de votre composant pour héberger tous les tests pertinents.
