@@ -7,9 +7,9 @@ Les **bonnes pratiques** sont une sorte de liste de choses à faire, qui, lorsqu
 
 ## Sommaire
 
- - [General Good Practices](https://github.com/TheHerbin/DevOps-GoodPractises#general-good-practices)
- - [Node JS](https://github.com/TheHerbin/DevOps-GoodPractises#best-practices-nodejs)
- - [React JS](https://github.com/TheHerbin/DevOps-GoodPractises#best-practices-reactjs)
+ - [Bonnes pratiques générales](https://github.com/TheHerbin/DevOps-GoodPractises/blob/main/README_FR.md#bonnes-pratiques-g%C3%A9n%C3%A9rales)
+ - [Node JS](https://github.com/TheHerbin/DevOps-GoodPractises/blob/main/README_FR.md#bonne-pratiques-nodejs)
+ - [React JS](https://github.com/TheHerbin/DevOps-GoodPractises/blob/main/README_FR.md#bonne-pratique-reactjs)
 
 ## Bonnes pratiques générales
 
