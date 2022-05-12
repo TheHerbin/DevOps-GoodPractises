@@ -1,49 +1,91 @@
-Bonnes pratiques ?  
+# Bonnes Pratiques : 
 
-Les bonnes pratiques sont un ensemble de normes qui, lorsqu’elles sont respectées peuvent fortement aider le développement, la maintenance, la modification, pour l’optimisation et la compréhension du code en général. 
+Les **bonnes pratiques** sont une sorte de liste de choses à faire, qui, lorsqu'appliquée, peut fortement aider le développement, la maintenance, la modification, l'optimisation et la compréhension du code en général.
+ 
+ 
+*Voici une liste non exhaustive de bonnes pratiques que vous pouvez-suivre pour vos projets :*
 
+## Sommaire
 
+ - [General Good Practices](https://github.com/TheHerbin/DevOps-GoodPractises#general-good-practices)
+ - [Node JS](https://github.com/TheHerbin/DevOps-GoodPractises#best-practices-nodejs)
+ - [React JS](https://github.com/TheHerbin/DevOps-GoodPractises#best-practices-reactjs)
 
-Voici une liste (non exhaustive) de bonnes pratiques à respecter lors du développement d’un projet en équipe ou seul : 
+## Bonnes pratiques générales
 
+### `indent`
 
+ - *Avoir une bonne indentation rendra votre code bien plus facile à comprendre..*.
+   
+   
+     ```javascript
+    function anExampleFunction() {
+        let x;
+        if(true){
+            x = true;
+        }else{
+            x = false;
+        }
+        return x;
+    }
 
-Bonnes Pratiques Générales :  
-
-Indentation : 
-
-Avoir une bonne indentation facilitera fortement la compréhension de votre code par les autres développeurs... 
-
-Respect des conventions de syntaxe (ex : camelCase, SnakeCase) 
-
-Le respect de telles conventions peut être très bénéfique un projet, cela permet de distinguer les fonctions des classes et des variables plus aisément et donc facilite la lecture du code. 
-
-Commenter son code 
-
-Aussi simple que cela puisse paraître, commenter son code peut être très utile et peut avoir plusieurs utilisations : cela peut être utilisé pour décrire ce que fait une fonction, les paramètres qu’elle reçoit ou retourne ou encore pour partager à d’autres développeurs ses doutes ou ajouter différentes indications comme ce qu’il faut ajouter à cet emplacement. 
-
-Faire des sauvegardes  
-
-Réaliser des sauvegardes fréquentes , que ce soit en local ou en ligne (git / github) 		permet de récupérer des morceaux de code que l’on peut avoir perdu ou encore de 		retourner à un état antérieur du projet. 
-
-Garder un code simple 
-
-Un code simple et concis facilite la lecture du code et permet d’avoir un 			programme moins lourd. 
-
-Portabilité (pas de données entrées en Dur) 
-
-Évolutivité du code  
-
-Réutilisation de code et modules  
-
-Réaliser des “tests” quotidiens et hebdomadaires 
-
-Créer des classes de tests unitaires, fonctionnels, d’intégration... 
-
-Utilisation d’API 
+    ```
+### `Respect des convention de syntaxe `   
 
 
-# Bonne pratique Node.js
+ - *Respecter les conventions comme camelCase ou SnakeCase peut être 
+   bénéfique pour un projet en les rendant les fonctions, variables et
+   objets plus faciles à lire.*
+   
+
+### `Commentez votre code ` 
+
+
+ - *Aussi simple que cela puisse paraître,commenter son code peut être utile
+   et peut avoir plusieures utilisations : cela peut être utilisé pour décrire 
+   ce que fait une fonction, les paramètres qu'elle reçoit ou retourne,
+   ou encore de partager ses doutes.*
+
+### `Faites des sauvegardes ` 
+
+
+ - *Faire des sauvegarde fréquentes, quelles soit locales ou en ligne
+   vous permet de retrouver des morceaux de code en cas d'erreur 
+    ou de retourner dans un état antérieur de votre projet.*
+
+### `Gardez un code simple ` 
+
+
+ - *Un code simple et concis facilite la lecture du code 
+   et optimise indirectement votre projet*
+   
+### `Portabilité ` 
+
+
+ - *N'utilisez pas trop de code ou de texte en dûr*
+
+### `Evolubilité du code` 
+
+
+ - *Ne verrouillez pas votre code et pensez à comment améliorer votre projet*
+   
+
+### `Modules, APIs et réutilisabilité du code` 
+
+
+ - *Vous pouvez créer des modules et des fonctions destinées à être réutilisées. 
+   Ainsi, votre code sera plus optimisé et moins lourd
+   N'hésitez pas à utiliser l'api d'autres personnes.*
+
+### `Réalisez des tests quotidiens et périodiques ` 
+
+
+ - *Si vous voulez un code propre et carré, réalisez des tests de votre code quotidiennement et
+   hebdomadairement. Cela peut réellement vous faire gagner du temps et réduit les chances d'erreurs
+   et vous fera gagner du temps au final.*
+
+
+# Bonne pratiques Node.js
 
 (https://github.com/goldbergyoni/nodebestpractices/blob/master/README.french.md#1-structure-de-projet) 
 (https://github.com/airbnb/javascript#comments)
