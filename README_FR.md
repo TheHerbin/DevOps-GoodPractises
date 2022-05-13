@@ -10,6 +10,7 @@ Les **bonnes pratiques** sont une sorte de liste de choses à faire, qui, lorsqu
  - [Bonnes pratiques générales](https://github.com/TheHerbin/DevOps-GoodPractises/blob/main/README_FR.md#bonnes-pratiques-g%C3%A9n%C3%A9rales)
  - [Node JS](https://github.com/TheHerbin/DevOps-GoodPractises/blob/main/README_FR.md#bonne-pratiques-nodejs)
  - [React JS](https://github.com/TheHerbin/DevOps-GoodPractises/blob/main/README_FR.md#bonne-pratique-reactjs)
+ - [Définition Of Done](https://github.com/TheHerbin/DevOps-GoodPractises/edit/main/README_FR.md#d%C3%A9finition-of-done)
 
 ## Bonnes pratiques générales
 
@@ -594,3 +595,18 @@ Ces outils aident à maintenir et à réutiliser le code. Au-delà de cela, cela
 
 ### `✍️ Conseil n°10 : Ecrire des tests pour tout le code`
 Dans n'importe quel langage de programmation, des tests adéquats garantissent que tout nouveau code ajouté à votre projet s'intègre bien au code existant et ne perturbe pas les fonctionnalités existantes. C'est une bonne idée d'écrire des tests pour tout nouveau composant que vous créez. En tant que bonne pratique, vous devez créer un __Test__répertoire dans le répertoire de votre composant pour héberger tous les tests pertinents.
+
+
+# Définition Of Done
+
+## C'est quoi ? 
+La definition of done peut être élaborée en atelier par l’équipe technique, le product owner, scrum master et l’équipe QA agile.
+L’exercice consiste à se mettre d’accord sur les critères qui semblent essentiels pour atteindre le niveau d’exigence souhaité pour le produit et assurer des livraisons de qualité.
+
+Exemple de critères présents dans la DoD :
+- Revue du code effectuée
+- Les critères d’acceptation de la User Story sont tous validés
+- Les différents tests ont été finalisés et acceptés par les acteurs de la qualité du produit (QA, PO, développeurs)
+- La documentation a été mise à jour
+- Les maquettes graphiques sont respectées
+- Livré sur un environnement stable
