@@ -10,6 +10,7 @@ The **good practises** are a set of standards which, when adhered to, can greatl
  - [General Good Practices](https://github.com/TheHerbin/DevOps-GoodPractises#general-good-practices)
  - [Node JS](https://github.com/TheHerbin/DevOps-GoodPractises#best-practices-nodejs)
  - [React JS](https://github.com/TheHerbin/DevOps-GoodPractises#best-practices-reactjs)
+ - [Definition Of Done](https://github.com/TheHerbin/DevOps-GoodPractises/edit/main/README.md#d%C3%A9finition-of-done)
 
 ## General Good Practices
 
@@ -596,3 +597,18 @@ These tools help to maintain and reuse code. Beyond that, it helps code to becom
 
 ### `✍️ Advice n°10 : Write tests for all code`
 In any programming language, adequate testing ensures that any new code added to your project integrates well with existing code and does not break existing functionality. It is a good idea to write tests for any new component that you create. As a good practice, you should create a __Test__ directory within your component’s directory to house all relevant tests.
+
+
+# Définition Of Done
+
+## What is it? 
+The definition of done can be elaborated in a workshop by the technical team, the product owner, scrum master and the agile QA team.
+The exercise consists of agreeing on the criteria that seem essential to achieve the desired level of requirement for the product and ensure quality deliveries.
+
+Example of criteria present in the DoD:
+- Code review performed
+- The acceptance criteria of the User Story are all validated
+- The various tests have been finalised and accepted by the product quality players (QA, PO, developers)
+- The documentation has been updated
+- The graphic models are respected
+- Delivered on a stable environment
