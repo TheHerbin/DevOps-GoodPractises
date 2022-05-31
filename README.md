@@ -10,7 +10,7 @@ The **good practises** are a set of standards which, when adhered to, can greatl
  - [General Good Practices](https://github.com/TheHerbin/DevOps-GoodPractises#general-good-practices)
  - [Node JS](https://github.com/TheHerbin/DevOps-GoodPractises#best-practices-nodejs)
  - [React JS](https://github.com/TheHerbin/DevOps-GoodPractises#best-practices-reactjs)
- - [Definition Of Done](https://github.com/TheHerbin/DevOps-GoodPractises/edit/main/README.md#d%C3%A9finition-of-done)
+ - [Definition Of Done](https://github.com/TheHerbin/DevOps-GoodPractises#definition-of-done)
 
 ## General Good Practices
 
@@ -599,7 +599,7 @@ These tools help to maintain and reuse code. Beyond that, it helps code to becom
 In any programming language, adequate testing ensures that any new code added to your project integrates well with existing code and does not break existing functionality. It is a good idea to write tests for any new component that you create. As a good practice, you should create a __Test__ directory within your component’s directory to house all relevant tests.
 
 
-# Définition Of Done
+# Definition Of Done
 
 ## What is it? 
 The definition of done can be elaborated in a workshop by the technical team, the product owner, scrum master and the agile QA team.
